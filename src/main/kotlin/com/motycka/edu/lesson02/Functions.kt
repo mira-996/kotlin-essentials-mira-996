@@ -1,30 +1,52 @@
 package com.motycka.edu.lesson02
 
+
 val coffeeOrders = mutableMapOf<Int, List<String>>()
+var currentOrderId = 1
 
 fun main() {
-    // You can write code here to try the functions
     processOrder(listOf(ESPRESSO, CAPPUCCINO, CAPPUCCINO, AMERICANO), 20.0)
     processOrder(listOf(ESPRESSO, FLAT_WHITE, AMERICANO), 10.0)
-    // processOrder(listOf(ESPRESSO, ESPRESSO, DOUBLE_ESPRESSO), 5.0) // will fail due to insufficient payment
+    processOrder(listOf(ESPRESSO, ESPRESSO, DOUBLE_ESPRESSO), 5.0) // Will fail due to insufficient payment
 }
 
-/* Implement the functions below */
-
+// Full order processing flow
 fun processOrder(items: List<String>, payment: Double): Double {
-    val orderId = TODO("call placerOrder(items)")
-    val totalToPay = TODO("call payOrder(orderId)")
+    val orderId = placeOrder(items)
+    val totalToPay = payOrder(orderId)
 
-    val change = TODO("calculate change by subtracting totalToPay from payment")
+    if (payment < totalToPay) {
+        println("Order ID $orderId: Payment of $$payment is insufficient. Total needed: $$totalToPay")
+        coffeeOrders.remove(orderId)
+        return -1.0
+    }
 
-    // TODO call completeOrder(orderId)
+    val change = payment - totalToPay
 
+    completeOrder(orderId)
+
+    println("Order ID $orderId completed. Change returned: $$change\n")
     return change
 }
 
 // TODO Implement placerOrder(items: List<String>): Int
+fun placeOrder(items: List<String>): Int {
+    coffeeOrders[currentOrderId] = items
+    println("Placed Order ID $currentOrderId: $items")
+    return currentOrderId++
+}
 
 // TODO Implement payOrder(orderId: Int): Double
+fun payOrder(orderId: Int): Double {
+    val items = coffeeOrders[orderId] ?: emptyList()
+    val total = items.sumOf { getItemPrice(it) }
+    println("Total for Order ID $orderId: $$total")
+    return total
+}
 
 // TODO Implement completeOrder(orderId: Int)
+fun completeOrder(orderId: Int) {
+    println("Order ID $orderId is completed and removed from active orders.")
+    coffeeOrders.remove(orderId)
+}
 
