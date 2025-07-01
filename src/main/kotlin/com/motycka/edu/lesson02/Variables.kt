@@ -14,9 +14,9 @@ val cappuccinoPrice = 3.0
 
 fun variables(espressoQuantity: Int, cappuccinoQuantity: Int) {
     val totalPrice: Double = (espressoQuantity * espressoPrice) + (cappuccinoQuantity * cappuccinoPrice)
-    println("Espressos: $espressoQuantity × $$espressoPrice")
-    println("Cappuccinos: $cappuccinoQuantity × $$cappuccinoPrice")
-    println("Total Price: $$totalPrice")
+//    println("Espressos: $espressoQuantity × $$espressoPrice")
+//    println("Cappuccinos: $cappuccinoQuantity × $$cappuccinoPrice")
+    println(totalPrice)
 }
 
 fun main(args: Array<String>) {

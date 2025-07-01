@@ -38,15 +38,14 @@ fun placeOrder(items: List<String>): Int {
 
 // TODO Implement payOrder(orderId: Int): Double
 fun payOrder(orderId: Int): Double {
-    val items = coffeeOrders[orderId] ?: emptyList()
-    val total = items.sumOf { getItemPrice(it) }
-    println("Total for Order ID $orderId: $$total")
-    return total
+    val items = coffeeOrders[orderId] ?: throw IllegalArgumentException("Order not found")
+    return items.sumOf { getItemPrice(it) }
 }
 
 // TODO Implement completeOrder(orderId: Int)
 fun completeOrder(orderId: Int) {
-    println("Order ID $orderId is completed and removed from active orders.")
+    if (!coffeeOrders.containsKey(orderId))
+        throw IllegalArgumentException("Order does not exist")
     coffeeOrders.remove(orderId)
 }
 

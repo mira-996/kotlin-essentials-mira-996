@@ -64,13 +64,12 @@ fun calculateTotalPriceWithDiscount(items: List<String>): Double {
 }
 
 // 5. Print the total price with a discount applied for each order
+val orders = mutableMapOf<Int, List<String>>()
 fun conditionals() {
-    val coffeeOrders = mapOf(
-        1 to listOf(ESPRESSO, CAPPUCCINO, LATTE, AMERICANO),
-        2 to listOf(ESPRESSO, DOUBLE_ESPRESSO, FLAT_WHITE)
-    )
+    orders[1] = listOf(ESPRESSO, CAPPUCCINO, LATTE, AMERICANO)
+    orders[2] = listOf(ESPRESSO, DOUBLE_ESPRESSO, FLAT_WHITE)
 
-    coffeeOrders.forEach { orderId, items ->
+    orders.forEach { orderId, items ->
         println("Processing Order ID: $orderId")
         println("Items: $items")
 
