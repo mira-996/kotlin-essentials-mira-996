@@ -55,7 +55,7 @@ fun collections() {
 
     // 4. Print the coffee menu items
     coffeeMenu.forEachIndexed { index, item ->
-        println(item)
+        println("${index + 1}. $item")
     }
 
     // 5. Create order1 with, 1x ESPRESSO, 2x CAPPUCCINO, and 1x AMERICANO
@@ -73,7 +73,8 @@ fun collections() {
     // 9. Print the orders placed, uncomment the println statement at the end
     println("\nOrders placed:")
     orders.forEach { (id, items) ->
-        println("Order ID: $id, Items: $items")
+        println("Order ID: $id")
+        items.forEach { println("- $it")}
     }
 }
 

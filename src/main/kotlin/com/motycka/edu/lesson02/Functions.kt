@@ -39,7 +39,7 @@ fun placeOrder(items: List<String>): Int {
 // TODO Implement payOrder(orderId: Int): Double
 fun payOrder(orderId: Int): Double {
     val items = coffeeOrders[orderId] ?: throw IllegalArgumentException("Order not found")
-    return items.sumOf { getItemPrice(it) }
+    return calculateTotalPriceWithDiscount(items) // applies discount
 }
 
 // TODO Implement completeOrder(orderId: Int)

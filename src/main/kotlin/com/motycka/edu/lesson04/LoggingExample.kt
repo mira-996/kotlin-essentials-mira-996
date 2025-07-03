@@ -4,13 +4,13 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 
 private val logger = KotlinLogging.logger { }
 
-class UserService {
-    private val logger = KotlinLogging.logger {}
-
-    fun login(username: String) {
-        logger.info { "User $username attempted login" }
-    }
-}
+//class UserService {
+//    private val logger = KotlinLogging.logger {}
+//
+//    fun login(username: String) {
+//        logger.info { "User $username attempted login" }
+//    }
+//}
 
 fun main() {
     logger.error { "error message" }
